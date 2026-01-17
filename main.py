@@ -33,3 +33,15 @@ print("Random Forest trained")
 from src.model_evaluation import evaluate_regression 
 rf_metrics=evaluate_regression(rf_model,X_test, y_test)
 print("Random Forest Evaluation:", rf_metrics)
+
+from src.model_evaluation import get_feature_importance
+feature_names=X_train.columns
+fi_df=get_feature_importance(rf_model, feature_names)
+
+print("\nTop 10 Important Features:")
+print(fi_df.head(10))
+
+
+from src.model_persistence import save_model
+save_model(rf_model, "models/random_forest.joblib" )
+print("Random Forest model saved")

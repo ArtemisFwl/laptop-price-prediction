@@ -5,6 +5,8 @@ Evaluates regression models using standard metrics
 """
 
 import numpy as np
+import pandas as pd
+
 from sklearn.metrics import mean_absolute_error,mean_squared_error, r2_score
 
 def evaluate_regression (model, X_test, y_test):
@@ -18,3 +20,18 @@ def evaluate_regression (model, X_test, y_test):
         "RMSE": rmse,
         "R2": r2
     }
+
+def get_feature_importance(model, feature_names):
+    """
+    Returns feature importance for tree based model
+    """
+    importance=model.feature_importances_
+
+    return(
+        pd.DataFrame({
+            "feature":feature_names,
+            "importance": importance
+        })
+        .sort_values(by="importance",ascending=False)
+        .reset_index(drop=True)
+    )

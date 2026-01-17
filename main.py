@@ -13,5 +13,12 @@ df = pd.read_csv(DATA_PATH)
 
 df_clean=clean_data(df)
 
+from src.feature_engineering import engineer_features
+
+df_clean = clean_data(df)
+df_fe = engineer_features(df_clean)
+
+print(df_fe.shape)
+
 
 print(df_clean.shape)

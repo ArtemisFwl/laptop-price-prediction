@@ -20,7 +20,7 @@ from src.encoding import prepare_data
 X_train, X_test, y_train, y_test = prepare_data(df_fe)
 
 
-print(df_fe.shape)
-print(df_clean.shape)
-print(X_train.shape, X_test.shape)
-print(y_train.shape, y_test.shape)
+from src.model_training import train_linear_regression
+model = train_linear_regression(X_train, y_train)
+
+print("Baseline Linear Regression trained")

@@ -26,4 +26,4 @@ model = train_linear_regression(X_train, y_train)
 from src.model_evaluation import evaluate_regression 
 metrics=evaluate_regression(model,X_test, y_test)
 
-print("Baseline Evaluation:", metrics)
+print("Evaluation after Scaling:", metrics)
